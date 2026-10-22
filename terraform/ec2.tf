@@ -10,10 +10,10 @@ data "aws_ami" "amazonlinux" {
 
 
 resource "aws_instance" "ansible" {
-  ami             = data.aws_ami.amazonlinux.id
-  instance_type   = var.instance_type
-  subnet_id       = aws_subnet.ansible.id
-  security_groups = [aws_security_group.ansible.name]
+  ami                    = data.aws_ami.amazonlinux.id
+  instance_type          = var.instance_type
+  subnet_id              = aws_subnet.ansible.id
+  vpc_security_group_ids = [aws_security_group.ansible.id]
 
   key_name = var.key_name
 
@@ -23,10 +23,10 @@ resource "aws_instance" "ansible" {
 }
 
 resource "aws_instance" "web" {
-  ami             = data.aws_ami.amazonlinux.id
-  instance_type   = var.instance_type
-  subnet_id       = aws_subnet.web.id
-  security_groups = [aws_security_group.web.name]
+  ami                    = data.aws_ami.amazonlinux.id
+  instance_type          = var.instance_type
+  subnet_id              = aws_subnet.web.id
+  vpc_security_group_ids = [aws_security_group.web.id]
 
   key_name = var.key_name
 
@@ -36,10 +36,10 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_instance" "db" {
-  ami             = data.aws_ami.amazonlinux.id
-  instance_type   = var.instance_type
-  subnet_id       = aws_subnet.db.id
-  security_groups = [aws_security_group.db.name]
+  ami                    = data.aws_ami.amazonlinux.id
+  instance_type          = var.instance_type
+  subnet_id              = aws_subnet.db.id
+  vpc_security_group_ids = [aws_security_group.db.id]
 
   key_name = var.key_name
 
