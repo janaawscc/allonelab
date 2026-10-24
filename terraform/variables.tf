@@ -37,7 +37,7 @@ variable "instance_type" {
 variable "key_name" {
   description = "AWS Key Pair Name"
   type        = string
-  default     = "terraform-admin-key"
+  default     = "ansible-admin"
 }
 
 variable "environment" {
